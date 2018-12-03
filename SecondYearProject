@@ -1,0 +1,1963 @@
+#include <iostream> //standard input and output libary
+#include<string>   // To be able to handle strings
+#include<cstdlib> // Able to use the system which is needed to clear and wipe terminal etc.
+#include <unistd.h>// sleep can be used 
+//#include "sqlite3.h"
+#include "libsqlite.hpp"
+#include "login"
+#include "gameover.cpp"
+
+using namespace std;
+int userinput = 0; // two inputs are used here to make it easier which one is used
+int locationplayer = 0;
+int showEnemyHp(int enemyhp, int attack); //displays enemyhp and attack
+int showHp(int hp, int enemyattack); //displays your hp and attack
+
+int showEnemyHp1(int enemyhp1, int attack1); //displays enemyhp and attack
+int showHp1(int hp1, int enemyattack1); //displays your hp and attack
+string name;
+string sex;
+string race;
+string input;
+int hp = 100;
+void howtoplay();
+void gameStart();
+void Start();
+int Intro();
+void credits();
+void north();
+void questiongame();
+void battlesystem();
+void cave();
+void spiderfight();
+void battlesystem2();
+void chaptertwo();
+void caveexit();
+void finalChapter();
+int main()
+{
+	Start();
+
+}
+
+
+void Start()
+{
+	char choice; // coverts numbers so they can be used as characters for input.
+     
+
+ 
+// do while loop allows my code to be executed at least once for use
+do   
+{
+     // list of what's avaliable on the menu and what will be shown
+  cout<<"\n Welcome To Rise of a Hero \n";
+  cout<<"**************************\n";
+  cout<<" Make a selection to continue\n";
+  cout << " 1. Play Now \n";
+  cout<<" 2. Credits\n";
+  cout<<" 3. How to Play\n";
+  cout<<" 4. Exit Game \n";
+  cout << " Enter number to execute choice: ";
+    cin >> choice; // inputs which are the choices avaliable for the menu
+    cout << endl;
+    
+  
+    
+// switch code below displays the outcome of selection for the game 
+ 
+ switch (choice)
+        {
+            case '1':
+                {       system("clear");
+    cout << "Loading"; // "loading" is printed to the terminal screen
+    cout.flush();
+        for (int i = 0; i < 3; i++) { // a loop here where everytime that i is smaller than 3 it will increment 1 . until it meets the condition. 
+            cout << ".";
+            cout.flush(); //previous messages in the cout buffers are flushed 
+            sleep(1.7); //pause for 1.7 seconds
+            
+        }
+        cout << "\b\b\b   \b\b\b"; //  allows the . to stay on 1 line and not go onto new lines 
+
+ cout << "\n";
+                 system("clear");
+                main2();
+                gameStart();
+                break;
+}
+               
+
+            case '2': 
+                cout << "\n";
+         {      system("clear");
+    cout << "Loading"; // "loading" is printed to the terminal screen
+    cout.flush();
+        for (int i = 0; i < 3; i++) { // a loop here where everytime that i is smaller than 3 it will increment . until it meets the condition. 
+            cout << ".";
+            cout.flush(); //previous messages in the cout buffers are flushed 
+            sleep(1.7); //pause for 1.7 seconds
+            
+        }
+        cout << "\b\b\b   \b\b\b"; //  allows the . to stay on 1 line and not go onto new lines 
+
+}               system("clear");
+                credits();       
+                break;
+            case '3':
+                cout << "How to Play\n" ;
+                cout << "\n";
+         {      system("clear"); 
+    cout << "Loading"; // "loading" is printed to the terminal screen
+    cout.flush();
+        for (int i = 0; i < 3; i++) { // a loop here where everytime that i is smaller than 3 it will increment . until it meets the condition. 
+            cout << ".";
+            cout.flush(); //previous messages in the cout buffers are flushed 
+            sleep(1.7); //pause for 1.7 seconds
+            
+        }
+        cout << "\b\b\b   \b\b\b"; //  allows the . to stay on 1 line and not go onto new lines 
+
+}             system("clear"); //Clears terminal
+                howtoplay();
+                break;
+
+            case '4':
+                cout << " Exit Game\n";
+                cout << "\n";
+                system("clear");
+               default:
+         
+                cout << "Thank you for playing! \n";  
+         // if the vaule is incorrect default kicks in as a error message .
+                cout << "Come again!\n";
+         sleep(2);
+         system("clear");
+         
+         
+   }
+    } while (choice != '4' ); // allows Menu to end at 4
+
+   
+}
+
+void howtoplay()
+  {
+string a;
+    char choice; // coverts numbers so they can be used as characters for input.
+    cout<<"This is a text based game and the controls on how to play are as followed:\n";
+    cout<<"#Enter numbers into the game to make decisions e.g 1,2\n";
+    cout<<"#When it comes to input,follow any on screen prompts\n";
+    cout<<"Thats all you need to know, have fun!\n";
+    cout<<"\n";  
+
+     
+// do while loop allows my code to be executed at least once for use
+do   
+{
+     // list of what's avaliable on the menu and what will be shown
+  cout<< "Do you want to go back to the main menu Y=1 N=2?\n";
+    cin >> a; // inputs which are the choices avaliable for the menu
+    cout << endl; //Varun Mamtani
+  if(a=="1") {
+    system("clear");
+     main();
+  } 
+  
+  else if(a=="2") {
+  system("clear");  
+  cout<<"Sad to see you go";
+   cout.flush();
+        for (int i = 0; i < 3; i++) { // a loop here where everytime that i is smaller than 3 it will increment 1 . until it meets the condition. 
+            cout << ".";
+            cout.flush(); //previous messages in the cout buffers are flushed 
+            sleep(1.7); //pause for 1.7 seconds
+            
+        
+        cout << "\b\b\b   \b\b\b"; //  allows the . to stay on 1 line and not go onto new lines 
+
+       cout << "\n";
+       system("clear");
+        exit (1);
+    
+  }    
+   
+         
+  } else if(a!="1, 2") {
+    system("clear");    
+    }
+      
+    
+// switch code below displays the outcome of selection for the game 
+ char choice;
+ switch (choice)
+        {
+            case '1':
+                cout << "\n";
+          system("clear");
+                Start();
+                break;
+
+            case '2': 
+                cout << "\n";
+                cout<<"Thanks for playing!";
+          system("clear");
+                break;
+               default:
+                cout << "Not a Valid Choice. \n";  
+         // if the vaule is incorrect default kicks in as a error message .
+                cout << "Try again.\n";
+         
+         
+   }
+
+    } while (choice != '4' ); // allows Menu to end at 4
+
+    
+    
+}
+void gameStart()
+{
+  system("clear");
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "******************************************     Chapter One: A HERO IS BORN     ************************************************\n!";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+    cout<< "\n";
+    sleep(3);
+    system("clear");
+    cout<< "Once upon a time, the planet we live on today was tyrannized by a giant dragon.\n";
+    sleep(2.5);
+    cout<<"The dragon stood taller than the tallest building, and it was covered with thick\n";
+    cout<<" black scales.\n";
+    sleep(2.5);
+    cout<<"The eyes were as red as rubies and glowed with pure hate, and from its giant jaws\n";
+    cout<<"flowed a stream of yellowish- green slime.\n";
+    sleep(2.5);
+    cout<<"It demanded from humankind a bloodthirst, to satisfy its huge appetite.\n";
+    sleep(2.5);
+    cout<<"Each day there were mothers, fathers, children and friends that were left\n";
+    cout<<" behind with nothing, all they could do was grieve for their loved ones.\n";
+    cout<<"One day, the dragon attacked a nearby village near to the coast, here lay\n";
+    sleep(2.5);
+    cout<<" a beautiful village populated by civilization to only be destroyed by the beast.\n";
+    sleep(2.5);
+    cout<<"The village was wasted and all that remained were bits of debris and corpses left to rot,\n";
+    cout<<" however, there was one survivor (YOU) that came out, but was heavily injured.\n";
+    sleep(2.5);
+    cout<<"The survivor had no recollection of who they were as they badly damaged their head when the\n";
+    cout<<"attack took place.";
+    cout<<"\n";
+    cout<<"\n";
+    sleep(5);
+
+    cout<<"It is your job now survior, to become the hero you were destined to be and seek vengeance for\n";
+    cout<<" all the ones that sacrificed their lives for the greater good!";
+        
+    
+    cout<<"\n";
+    cout<<"\n";
+
+    sleep(1.5);
+    Intro();
+}
+
+	
+
+//Varun Mamtani
+int Intro()
+{
+
+ 
+   cout << "Enter the name of your hero: \n";
+    cin >> name;
+    cout << "Enter hero sex: (M/F)\n";
+    cin >> sex;
+    cout << "Enter hero race: (e.g dwarf,elf,human)\n";
+    cin >> race;
+
+  
+  try
+    {
+        sqlite::sqlite db( "risen.sqlite" );
+        auto cur = db.get_statement();
+    
+        cur-> set_sql("INSERT INTO Persons(Name, Sex, Race)"
+               "VALUES (?,?,?)");
+        cur-> set_sql("SELECT count(*) FROM Persons WHERE name =? and sex = ? and race = ?");
+        cur->prepare();
+      
+        cur->bind(1, name);
+        cur->bind(2, sex);
+        cur->bind(3, race);
+        cur->step();  
+    }
+  
+  catch( sqlite::exception e )      // catch all sql issues
+    {
+        std::cerr << e.what() << std::endl;
+        return 1;
+    }
+  
+  
+  
+  
+     
+ 
+    system("clear");
+	cout << "Name : " << name << "   |   " << "Sex: " << sex << "   |   " << "Race: " << race << "   |   " << "HP: " << hp << "  |   \n" <<endl;
+    
+cout<<"\n";
+cout<<"\n";
+   sleep(2);
+    
+    north();
+   
+}
+void credits() {
+    int anwserinput = 0;
+    string a;
+    cout<<"Thanks for playing our game!!\n";
+    
+    sleep(1);
+    cout<<"Creators: \n";
+    sleep(1);
+    
+    cout<< "BRUNO\n";
+    sleep(1);
+    
+    cout<<"BRANDON\n";
+    sleep(1);
+        
+    cout<<"MYLES\n";
+    sleep(1);
+    
+    cout<<"RIDVAN\n";
+     sleep(1);   
+    
+    cout<<"VARUN\n";
+    sleep(1);
+    
+    cout<<"DANIEL\n";
+    
+        
+  cout<<"Enter the number '1' to return back to the main menu:\n"; //Varun Mamtani
+  cin>>a;
+  
+  if(a=="1") {
+    system("clear");
+     main();
+  } 
+  
+  else if(a!="1") {
+    
+  cout<<"Invalid input, please try again: ";
+   
+  }
+    
+   
+
+    
+// do while loop allows  code to be executed at least once for use
+ char choice;
+do   
+{
+   
+     // list of what's avaliable on the menu and what will be shown
+     // 
+    cin >> choice; // inputs which are the choices avaliable
+    
+    cout << endl;
+  
+    
+// switch code below displays the outcome of selection for the game 
+ 
+ switch (choice)
+        {
+            case '1':
+                cout << "\n";
+          system("clear");
+                Start();
+                break;
+
+            case '2': 
+                cout << "\n";
+                cout<<"Thanks for playing!";
+          system("clear");
+         system("exit");
+                break;
+               default:
+                cout << "Not a Valid Choice. \n";  
+         // if the vaule is incorrect default kicks in as a error message .
+                cout << "Try again.\n";
+         
+         
+   }
+
+} while (choice != '4' ); // allows Menu to end at 4
+
+    }
+
+void questiongame()
+{
+    {
+	for (;;)// infinte loop
+	{
+ 
+		/*these are the variables for use later*/
+		int Health = 100, Damage = 100;
+ 
+ 
+		//intro 
+ 
+		system("clear");
+		cout << "Goblin: Since you have nothing to defend yourself with lets play a game!!\n " << endl;
+        cout<< "Goblin: What is your name?\n";
+		string name;
+		cin >>name;
+ 
+ 
+ 
+		cout << "Alright then, " << name << " let's begin the game! " << endl;
+ 
+        sleep(3);
+        system("clear");
+		cout << "I am a goblin ,also a trickster, I love to reason with people\n " << name << endl;
+ 
+		cout<<"\n";
+        
+               
+		
+ 
+ 
+		cout << "Let me continue, we shall play a basic game, if you lose I kill you simple?" << endl;
+        cout<<"\n";
+		cout << "Your objective is to answer these questions correctly\n";
+ cout<<"If you somehow win then you will live and I will die by your hands, agreed?";
+		sleep(5);
+		
+ cout<<"\n";
+		cout << "You have 100 health, if you loose everything, you have lost the game.\n";
+        cout<<"\n";
+        cout<<"The questions will be based around video games!!";
+		cout << "Good Luck " << name << endl;
+ 
+		cout << "Now, " << name << " you will get some questions: " << endl;
+        sleep(5);
+        system("clear");
+	    
+		//questions and functions
+		
+		int Answer = 1;
+		int Response;
+		cout << "Q1. In Uncharted 4, which PlayStation 1 title does Nathan Drake play?\n";
+        cout<<"1. Crash bandicoot?\n";
+        cout<<"2. Halo?\n";
+        cout<<"3. Mortal kombat?\n";
+        cout<<"4. Super mario bros?\n";
+        
+		cin >> Response;
+		if (Response == 1)
+			cout << "Yey it's correct! Let's continue! " << endl;
+		
+		else
+				{
+					cout << "I'm'afraid that is incorrect, goodbye\n"<<name<<endl;
+            cout<<"#The goblin slits your throat with one mighty swing!\n";
+            cout<<"#You are left there to bleed from your wound!!\n";
+					cout << " Health(100) " << " - " << " Damage(100) " << " = " << Health - Damage << endl;
+					break;}
+	
+		
+ 
+		
+		int Answer1 = 1;
+		int Response1;
+		cout << "Q2. What was Master Chiefs tag?" << endl;
+        cout<<"1. 117\n";
+        cout<<"2. 778\n";
+        cout<<"3. 332\n";
+        cout<<"4. 006\n";
+        
+		cin >> Response1;
+		if (Response1 == Answer1)
+			cout << "Yey it's correct! Let's continue! " << endl;
+		
+		else
+				{
+					cout << "I'm' afraid that is incorrect, goodbye, "<<name<<endl;
+            cout<<"#The goblin slits your throat with one mighty swing!\n";
+            cout<<"#You are left there to bleed from your wound!!\n";
+					cout << " Health(100) " << " - " << " Damage(100) " << " = " << Health - Damage << endl;
+					break;}
+	
+ 
+		
+		
+		int Answer2 = 1;
+		int Response2;
+		cout << "Q3. What was the highest selling console of all time?" << endl;
+        cout<<"1. PlayStation2?\n";
+        cout<<"2. Atari?\n";
+        cout<<"3. Xbox 360?\n";
+        cout<<"4. Wii?\n";
+		
+        cin >> Response2;
+		if (Response2 == Answer2)
+			cout << "Yey it's correct! Let's continue! " << endl;
+		else
+				{
+					cout << "I'm' afraid that is incorrect, goodbye, "<<name<<endl;
+            cout<<"#The goblin slits your throat with one mighty swing!\n";
+            cout<<"#You are left there to bleed from your wound!!\n";
+					cout << " Health(100) " << " - " << " Damage(100) " << " = " << Health - Damage << endl;
+					break;}
+	
+			
+		    
+		int Answer3 = 2;
+		int Response3;
+		cout << "Q4. What console was final fantasy released on?" << endl;
+        cout<<"1.Xbox?\n";
+       cout<<"2.PlayStation?\n";
+        cout<<"3. Sega mega drive?\n";
+        cout<<"4. Wii?\n";
+        
+        cin >> Response3;
+		if (Response1 == Answer3)
+			cout << "Yey it's correct! Let's continue! " << endl;
+			else
+				{
+					cout << "I'm' afraid that is incorrect, goodbye, "<<name<<endl;
+            cout<<"#The goblin slits your throat with one mighty swing!\n";
+            cout<<"#You are left there to bleed from your wound!!\n";
+					cout << " Health(100) " << " - " << " Damage(100) " << " = " << Health - Damage << endl;
+					break;}
+	
+	
+ 
+ 
+				
+            int Answer4 = 3;
+            int Response4;
+            cout << "Q5. What was main protaganist name in the metroid series?" << endl;
+            cout<<"1. Solid snake?\n";
+            cout<<"2. John?\n";
+            cout<<"3. Samus aran?\n";
+            cout<<"4. Seamus morgan?\n";
+				cin >> Response4;
+				if (Response4 == Answer4)
+					cout << "Congratulations, you freaking won the game! " << endl;
+				
+				else
+				{
+					cout << "I'm afraid that is incorrect, goodbye, "<<name<<endl;
+            cout<<"#The goblin slits your throat with one mighty swing!\n";
+            cout<<"#You are left there to bleed from your wound!!\n";
+					cout << " Health(100) " << " - " << " Damage(100) " << " = " << Health - Damage << endl;
+					break;}
+	
+				
+
+				
+			
+				cout << "Congratulations again sir, you won this, you can strike me down!!" << endl;
+        cin.get();
+        cout<<"As you go to use the goblins sword to strike him down, he pulls out a small blade and jabs it in your neck\n";
+        cout<<"Goblin: You should never trust a goblin, traveler!!\n";
+        cout <<"#Goblin walks away and leaves you bleeding helplessly on the floor!\n";
+        cout<<"\n";
+        cout<<"Press 1 to exit!\n";
+        int selection;
+        cin>>selection;
+            
+        if (selection == 1){
+            break;
+        }
+        else{
+            break;
+        }
+ 
+			
+                
+
+    }
+}
+}
+
+
+
+void battlesystem()
+    {
+     {
+	int choice;
+	int monsterHP, playerHP, i, init, playerAttack, playerDef, playerAgi, monsterAttack, monsterDef, magi, damage, monsterDamage;
+	playerAttack = 10;
+	playerDef = 15;
+	playerAgi = 5;
+	monsterAttack = 2;
+	monsterDef = 5;
+	magi = 0;
+
+	srand(unsigned(time(0)));
+	init = rand() % 2 + 1;
+	monsterHP = rand() % 30 + 5;
+	playerHP = rand() % 20 + 80;
+	if (init == 1) {
+		cout << "You can start!\n";
+	}
+	while (playerHP > 0 || monsterHP > 0) {
+		cout << "What do you want to do?\n 1 -> Fierce Attack \n 2 -> Light Attack \n 3 -> Defensive Dance.\n";
+		do { cin >> choice; } while (choice > 3 || choice < 1);
+		switch (choice) {
+		case 1:
+			playerAttack = rand() % 5 + 10;
+			playerDef = rand() % 10 + 10;
+			playerAgi = rand() % 5;
+			break;
+		case 2:
+			playerAttack = rand() % 5 + 10;
+			playerDef = rand() % 10 + 10;
+			playerAgi = rand() % 15;
+			break;
+		case 3:
+			playerAttack = rand() % 5 + 10;
+			playerDef = rand() % 20 + 10;
+			playerAgi = rand() % 5;
+			break;
+		}
+		choice = rand() % 3;
+
+		switch (choice) {
+		case 1:
+			monsterAttack = rand() % 5 + 10;
+			monsterDef = rand() % 10 + 10;
+			magi = rand() % 5;
+			break;
+		case 2:
+			monsterAttack = rand() % 5 + 10;
+			monsterDef = rand() % 10 + 10;
+			magi = rand() % 15;
+			break;
+		case 3:
+			monsterAttack = rand() % 5 + 10;
+			monsterDef = rand() % 20 + 10;
+			magi = rand() % 5;
+			break;
+		}
+		monsterDamage = (playerAttack - magi) - (monsterDef / playerAttack);
+		if (monsterDamage <0) {
+			monsterDamage = 0;
+		}
+		monsterHP = monsterHP - monsterDamage;
+		cout << "You did " << monsterDamage << " damage to the goblin!\n";
+		cin.get();
+
+		if (monsterHP < 1) {
+			cout << "You killed the goblin! Well done!\n";
+      cout<<"Press ENTER to continue...\n";
+			cin.get();
+			
+		}
+
+		cout << "The monster now has " << monsterHP << " HP left.\n";
+		damage = (monsterAttack - playerAgi) - (playerDef / monsterAttack);
+		if (damage < 0)
+		{
+			damage = 0;
+		}
+		playerHP = playerHP - damage;
+
+		cout << "The monster stole " << damage << " points from you. You still have, " << playerHP << " HP points availalble\n";
+
+		if (playerHP < 1) {
+			cout << "You died! The goblin still has " << monsterHP << " HP left. \n";
+      sleep(2);
+      system("clear");
+      main3;
+      main;
+      break;
+			cin.get();
+			
+		}
+		else {
+			cout << "You can start!\n";
+
+			while (playerHP > 0 || monsterHP > 0) {
+				cout << "What do you want to do?\n 1 -> Fierce Attack \n 2 -> Light Attack \n 3 -> Defensive Dance.\n";
+				do { cin >> choice; } while (choice > 3 || choice < 1);
+				switch (choice) {
+				case 1:
+					playerAttack = rand() % 20 + 10;
+					playerDef = rand() % 10 + 10;
+					playerAgi = rand() % 5;
+					break;
+				case 2:
+					playerAttack = rand() % 5 + 10;
+					playerDef = rand() % 10 + 10;
+					playerAgi = rand() % 15;
+					break;
+				case 3:
+					playerAttack = rand() % 10 + 10;
+					playerDef = rand() % 20 + 10;
+					playerAgi = rand() % 5;
+					break;
+				}
+				choice = rand() % 3;
+
+				switch (choice) {
+				case 1:
+					monsterAttack = rand() % 20 + 10;
+					monsterDef = rand() % 10 + 10;
+					magi = rand() % 5;
+					break;
+				case 2:
+					monsterAttack = rand() % 5 + 10;
+					monsterDef = rand() % 10 + 10;
+					magi = rand() % 15;
+					break;
+				case 3:
+					monsterAttack = rand() % 10 + 10;
+					monsterDef = rand() % 20 + 10;
+					magi = rand() % 5;
+					break;
+				}
+				monsterDamage = (playerAttack - magi) - (monsterDef / playerAttack);
+				if (monsterDamage <0) {
+					monsterDamage = 0;
+				}
+				monsterHP = monsterHP - monsterDamage;
+				cout << "You did " << monsterDamage << " damage to the monster!\n";
+				cin.get();
+
+				if (monsterHP < 1) {
+					cout << "You killed the goblin! Well done! \n";
+           sleep(2);
+          system("clear");
+                cout<<"As I pull my sword out of the goblin's chest I see a dark cave,infront!\n";
+                cout<<"I guess I need to head through there, as it is blocking my path!\n";
+                sleep(3.5);
+                cave();
+					cin.get();
+				
+				}
+
+				cout << "The monter now has " << monsterHP << " HP left.\n";
+				damage = (monsterAttack - playerAgi) - (playerDef / monsterAttack);
+				if (damage < 0)
+				{
+					damage = 0;
+				}
+				playerHP = playerHP - damage;
+
+				cout << "The monster stole " << damage << " points from you. You still have, " << playerHP << " HP points availalble\n";
+				if (playerHP < 1) {
+					cout << "You died! The beast still has " << monsterHP << " HP left. \n";
+                    sleep(2);
+          system("clear");
+                    main3();
+                    main();
+                    break;
+					cin.get();
+					
+				}
+			}
+		}
+	}
+}
+    
+}
+
+    
+void north(){
+    
+   int selectioninput;
+   int selectioninput2;
+    cout <<name<< ": I see a body infront of me and it's twitching, it looks like a man.\n";
+    sleep(1);
+cout<<"Mysterious man: Yoo yoo youu need to find the grandmaster *cough* to help you defeat the dragon that caused\n";
+    
+cout << "this madness, head north until you see the spire #he dies of his wounds\n";
+    cout<<"\n";
+    sleep(4);
+    cout<< name<< ": He said to head north so that I can find the grandmaster, so north is where i will head\n";
+    cout<<"#Your hero heads north\n";
+    
+   cout << "Walking"; // "Walking" is printed to the terminal screen
+    cout.flush();
+        for (int i = 0; i < 3; i++) { // a loop here where everytime that i is smaller than 3 it will increment . until it meets the condition. 
+            cout << ".";
+            cout.flush(); //previous messages in the cout buffers are flushed 
+            sleep(3); //pause for 1.7 seconds  
+        }
+        cout << "\b\b\b   \b\b\b"; //  allows the . to stay on 1 line and not go onto new lines 
+        
+    sleep(2);
+  cout<<"\n";
+    
+    
+    cout<< "#While heading north you find a chest, what do you do?\n";
+    cout<<"\n";
+    cout<<"Inputs must be either 1 to open chest or 2 to ignore the chest: ";
+    sleep(2);
+    
+     int choiceOne;
+    cin>>choiceOne;
+    switch(choiceOne)
+    {
+        case 1: 
+            cout << "You open the chest and find a fine blade and a wooden torch!!\n" << endl;
+            sleep(2);
+            cout<<"#You hear a noise behind you.\n";
+            sleep(2);
+            cout<<"#Infront of you stands a goblin,only option is to fight it with the sword!\n";
+            sleep(3);
+            system("clear");
+            cout<<"BATTLE PHASE!\n";
+            battlesystem();
+            break;
+        case 2: 
+            cout << "You ignore the chest...\n" << endl;
+            cout<<"\n";
+              
+        cout<<"#You have missed out on whatever was in the chest, this could impact you later on!\n";
+        cout<<"\n";
+        cout<<"A goblin jumps out and suprises you!!\n";
+            sleep(3);
+            system("clear");
+            questiongame();
+            break;
+        default:
+            while(!(cin>>choiceOne)){
+             cout<<"That doesn't seem right,hmmmm??\n";
+                cin.clear();
+                cin.ignore(100,'\n');
+            }
+}
+
+}
+
+void castleFight()
+    {
+     {
+	int choice;
+	int monsterHP, playerHP, i, init, playerAttack, playerDef, playerAgi, monsterAttack, monsterDef, magi, damage, monsterDamage;
+	playerAttack = 10;
+	playerDef = 15;
+	playerAgi = 5;
+	monsterAttack = 2;
+	monsterDef = 5;
+	magi = 0;
+
+	srand(unsigned(time(0)));
+	init = rand() % 2 + 1;
+	monsterHP = rand() % 50 + 80;
+	playerHP = rand() % 50 + 100;
+	if (init == 1) {
+    
+		cout << "You can start!\n";
+	}
+	while (playerHP > 0 || monsterHP > 0) {
+		cout << "What do you want to do?\n 1 -> Fierce Attack \n 2 -> Light Attack \n 3 -> Defensive Dance.\n";
+		do { cin >> choice; } while (choice > 3 || choice < 1);
+		switch (choice) {
+		case 1:
+			playerAttack = rand() % 5 + 10;
+			playerDef = rand() % 10 + 10;
+			playerAgi = rand() % 5;
+			break;
+		case 2:
+			playerAttack = rand() % 5 + 10;
+			playerDef = rand() % 10 + 10;
+			playerAgi = rand() % 15;
+			break;
+		case 3:
+			playerAttack = rand() % 5 + 10;
+			playerDef = rand() % 20 + 10;
+			playerAgi = rand() % 5;
+			break;
+		}
+		choice = rand() % 3;
+
+		switch (choice) {
+		case 1:
+			monsterAttack = rand() % 5 + 10;
+			monsterDef = rand() % 10 + 10;
+			magi = rand() % 5;
+			break;
+		case 2:
+			monsterAttack = rand() % 5 + 10;
+			monsterDef = rand() % 10 + 10;
+			magi = rand() % 15;
+			break;
+		case 3:
+			monsterAttack = rand() % 5 + 10;
+			monsterDef = rand() % 20 + 10;
+			magi = rand() % 5;
+			break;
+		}
+		monsterDamage = (playerAttack - magi) - (monsterDef / playerAttack);
+		if (monsterDamage <0) {
+			monsterDamage = 0;
+		}
+		monsterHP = monsterHP - monsterDamage;
+		cout << "You did " << monsterDamage << " damage to the dragon!\n";
+		cin.get();
+
+		if (monsterHP < 1) {
+			cout << "You killed the dragon! Well done!\n";
+      sleep(2);
+      system("clear");
+      finalChapter();
+			
+			
+		}
+
+		cout << "The monster now has " << monsterHP << " HP left.\n";
+		damage = (monsterAttack - playerAgi) - (playerDef / monsterAttack);
+		if (damage < 0)
+		{
+			damage = 0;
+		}
+		playerHP = playerHP - damage;
+
+		cout << "The beast stole " << damage << " points from you. You still have, " << playerHP << " HP points availalble\n";
+
+		if (playerHP < 1) {
+			cout << "You died! The 4 legged beast  still has " << monsterHP << " HP left. \n";
+      sleep(2);
+      system("clear");
+       main3;
+       main;
+       break;
+			cin.get();
+			
+		}
+		else {
+			cout << "You can start!\n";
+
+			while (playerHP > 0 || monsterHP > 0) {
+				cout << "What do you want to do?\n 1 -> Fierce Attack \n 2 -> Light Attack \n 3 -> Defensive Dance.\n";
+				do { cin >> choice; } while (choice > 3 || choice < 1);
+				switch (choice) {
+				case 1:
+					playerAttack = rand() % 20 + 10;
+					playerDef = rand() % 10 + 10;
+					playerAgi = rand() % 5;
+					break;
+				case 2:
+					playerAttack = rand() % 5 + 10;
+					playerDef = rand() % 10 + 10;
+					playerAgi = rand() % 15;
+					break;
+				case 3:
+					playerAttack = rand() % 10 + 10;
+					playerDef = rand() % 20 + 10;
+					playerAgi = rand() % 5;
+					break;
+				}
+				choice = rand() % 3;
+
+				switch (choice) {
+				case 1:
+					monsterAttack = rand() % 20 + 10;
+					monsterDef = rand() % 10 + 10;
+					magi = rand() % 5;
+					break;
+				case 2:
+					monsterAttack = rand() % 5 + 10;
+					monsterDef = rand() % 10 + 10;
+					magi = rand() % 15;
+					break;
+				case 3:
+					monsterAttack = rand() % 10 + 10;
+					monsterDef = rand() % 20 + 10;
+					magi = rand() % 5;
+					break;
+				}
+				monsterDamage = (playerAttack - magi) - (monsterDef / playerAttack);
+				if (monsterDamage <0) {
+					monsterDamage = 0;
+				}
+				monsterHP = monsterHP - monsterDamage;
+				cout << "You did " << monsterDamage << " damage to the dragon!\n";
+				cin.get();
+
+				if (monsterHP < 1) {
+					cout << "You killed the dragon! Well done! \n";
+           sleep(2);
+           finalChapter();
+           system("clear");     
+					
+				
+				}
+
+				cout << "The 4 legged beast now has " << monsterHP << " HP left.\n";
+				damage = (monsterAttack - playerAgi) - (playerDef / monsterAttack);
+				if (damage < 0)
+				{
+					damage = 0;
+				}
+				playerHP = playerHP - damage;
+
+				cout << "The ddragon stole " << damage << " points from you. You still have, " << playerHP << " HP points availalble\n";
+				if (playerHP < 1) {
+					cout << "You died! The beast still has " << monsterHP << " HP left. \n";
+                    sleep(2);
+          system("clear");
+                    main3();
+                    main();
+                    break;
+					cin.get();
+					
+				}
+			}
+		}
+	}
+}
+    
+}
+
+void battlesystem2(){
+     {
+	int choice;
+	int monsterHP, playerHP, i, init, playerAttack, playerDef, playerAgi, monsterAttack, monsterDef, magi, damage, monsterDamage;
+	playerAttack = 10;
+	playerDef = 15;
+	playerAgi = 5;
+	monsterAttack = 10;
+	monsterDef = 15;
+	magi = 5;
+  playerHP = 100;
+
+	srand(unsigned(time(0)));
+	init = rand() % 2 + 1;
+	monsterHP = rand() % 50 + 60;
+       
+	if (init == 1) {
+		cout << "You can start!\n";
+	}
+	while (playerHP > 0 || monsterHP > 0) {
+		cout << "What do you want to do?\n 1 -> Fierce Attack \n 2 -> Light Attack \n 3 -> Defensive Dance.\n";
+		do { cin >> choice; } while (choice > 3 || choice < 1);
+		switch (choice) {
+		case 1:
+			playerAttack = rand() % 20 + 10;
+			playerDef = rand() % 10 + 10;
+			playerAgi = rand() % 5;
+			break;
+		case 2:
+			playerAttack = rand() % 5 + 10;
+			playerDef = rand() % 10 + 10;
+			playerAgi = rand() % 15;
+			break;
+		case 3:
+			playerAttack = rand() % 10 + 10;
+			playerDef = rand() % 20 + 10;
+			playerAgi = rand() % 5;
+			break;
+		}
+		choice = rand() % 3;
+
+		switch (choice) {
+		case 1:
+			monsterAttack = rand() % 20 + 10;
+			monsterDef = rand() % 10 + 10;
+			magi = rand() % 5;
+			break;
+		case 2:
+			monsterAttack = rand() % 5 + 10;
+			monsterDef = rand() % 10 + 10;
+			magi = rand() % 15;
+			break;
+		case 3:
+			monsterAttack = rand() % 10 + 10;
+			monsterDef = rand() % 20 + 10;
+			magi = rand() % 5;
+			break;
+		}
+		monsterDamage = (playerAttack - magi) - (monsterDef / playerAttack);
+		if (monsterDamage <0) {
+			monsterDamage = 0;
+		}
+		monsterHP = monsterHP - monsterDamage;
+		cout << "You did " << monsterDamage << " damage to the monster!\n";
+		cin.get();
+
+		if (monsterHP < 1) {
+			cout << "You killed the monster! Well done!\n"; 
+    
+			
+		}
+
+		cout << "The monster now has " << monsterHP << " HP left.\n";
+		damage = (monsterAttack - playerAgi) - (playerDef / monsterAttack);
+		if (damage < 0)
+		{
+			damage = 0;
+		}
+		playerHP = playerHP - damage;
+
+		cout << "The monster stole " << damage << " points from you. You still have, " << playerHP << " HP points availalble\n";
+
+		if (playerHP < 1) {
+			cout << "You died! The beast still has " << monsterHP << " HP left. \n";
+      sleep(2);
+      system("clear");
+      main3;
+      main;
+      break;
+			cin.get();
+			
+		}
+		else {
+			cout << "You can start!\n";
+
+			while (playerHP > 0 || monsterHP > 0) {
+				cout << "What do you want to do?\n 1 -> Fierce Attack \n 2 -> Light Attack \n 3 -> Defensive Dance.\n";
+				do { cin >> choice; } while (choice > 3 || choice < 1);
+				switch (choice) {
+				case 1:
+					playerAttack = rand() % 20 + 10;
+					playerDef = rand() % 10 + 10;
+					playerAgi = rand() % 5;
+					break;
+				case 2:
+					playerAttack = rand() % 5 + 10;
+					playerDef = rand() % 10 + 10;
+					playerAgi = rand() % 15;
+					break;
+				case 3:
+					playerAttack = rand() % 10 + 10;
+					playerDef = rand() % 20 + 10;
+					playerAgi = rand() % 5;
+					break;
+				}
+				choice = rand() % 3;
+
+				switch (choice) {
+				case 1:
+					monsterAttack = rand() % 20 + 10;
+					monsterDef = rand() % 10 + 10;
+					magi = rand() % 5;
+					break;
+				case 2:
+					monsterAttack = rand() % 5 + 10;
+					monsterDef = rand() % 10 + 10;
+					magi = rand() % 15;
+					break;
+				case 3:
+					monsterAttack = rand() % 10 + 10;
+					monsterDef = rand() % 20 + 10;
+					magi = rand() % 5;
+					break;
+				}
+				monsterDamage = (playerAttack - magi) - (monsterDef / playerAttack);
+				if (monsterDamage <0) {
+					monsterDamage = 0;
+				}
+				monsterHP = monsterHP - monsterDamage;
+				cout << "You did " << monsterDamage << " damage to the monster!\n";
+				cin.get();
+
+				if (monsterHP < 1) {
+					cout << "You killed the monster! Well done! \n";
+        
+				}
+
+				cout << "The monter now has " << monsterHP << " HP left.\n";
+				damage = (monsterAttack - playerAgi) - (playerDef / monsterAttack);
+				if (damage < 0)
+				{
+					damage = 0;
+				}
+				playerHP = playerHP - damage;
+
+				cout << "The monster stole " << damage << " points from you. You still have, " << playerHP << " HP points availalble\n";
+				if (playerHP < 1) {
+					cout << "You died! The beast still has " << monsterHP << " HP left. \n";
+                    sleep(2);
+                    system("clear");
+                    main3;
+                    main;
+                    break;
+					cin.get();
+					
+				}
+			}
+		}
+	}
+}
+    
+}
+void spiderfight(){
+    {
+	int choice;
+	int monsterHP, playerHP, i, init, playerAttack, playerDef, playerAgi, monsterAttack, monsterDef, magi, damage, monsterDamage;
+	playerAttack = 10;
+	playerDef = 15;
+	playerAgi = 5;
+	monsterAttack = 10;
+	monsterDef = 15;
+	magi = 5;
+
+	srand(unsigned(time(0)));
+	init = rand() % 2 + 1;
+	monsterHP = rand() % 35 + 70;
+	playerHP = rand() % 50 + 80;
+	if (init == 1) {
+		cout << "You can start!\n";
+	}
+	while (playerHP > 0 || monsterHP > 0) {
+		cout << "What do you want to do?\n 1 -> Fierce Attack \n 2 -> Light Attack \n 3 -> Defensive Dance.\n";
+		do { cin >> choice; } while (choice > 3 || choice < 1);
+		switch (choice) {
+		case 1:
+			playerAttack = rand() % 20 + 10;
+			playerDef = rand() % 10 + 10;
+			playerAgi = rand() % 5;
+			break;
+		case 2:
+			playerAttack = rand() % 5 + 10;
+			playerDef = rand() % 10 + 10;
+			playerAgi = rand() % 15;
+			break;
+		case 3:
+			playerAttack = rand() % 10 + 10;
+			playerDef = rand() % 20 + 10;
+			playerAgi = rand() % 5;
+			break;
+		}
+		choice = rand() % 3;
+
+		switch (choice) {
+		case 1:
+			monsterAttack = rand() % 20 + 10;
+			monsterDef = rand() % 10 + 10;
+			magi = rand() % 5;
+			break;
+		case 2:
+			monsterAttack = rand() % 5 + 10;
+			monsterDef = rand() % 10 + 10;
+			magi = rand() % 15;
+			break;
+		case 3:
+			monsterAttack = rand() % 10 + 10;
+			monsterDef = rand() % 20 + 10;
+			magi = rand() % 5;
+			break;
+		}
+		monsterDamage = (playerAttack - magi) - (monsterDef / playerAttack);
+		if (monsterDamage <0) {
+			monsterDamage = 0;
+		}
+		monsterHP = monsterHP - monsterDamage;
+		cout << "You did " << monsterDamage << " damage to the monster!\n";
+		cin.get();
+
+		if (monsterHP < 1) {
+			cout << "You killed the giant spider! Well done!\n";
+			cin.get();
+			
+		}
+
+		cout << "The spider now has " << monsterHP << " HP left.\n";
+		damage = (monsterAttack - playerAgi) - (playerDef / monsterAttack);
+		if (damage < 0)
+		{
+			damage = 0;
+		}
+		playerHP = playerHP - damage;
+
+		cout << "The monster stole " << damage << " points from you. You still have, " << playerHP << " HP points availalble\n";
+
+		if (playerHP < 1) {
+			cout << "You died! The beast still has " << monsterHP << " HP left. \n";
+      sleep(2);
+      system("clear");
+      main3;
+      main;
+      break;
+			cin.get();
+			
+		}
+		else {
+			cout << "You can start!\n";
+
+			while (playerHP > 0 || monsterHP > 0) {
+				cout << "What do you want to do?\n 1 -> Fierce Attack \n 2 -> Light Attack \n 3 -> Defensive Dance.\n";
+				do { cin >> choice; } while (choice > 3 || choice < 1);
+				switch (choice) {
+				case 1:
+					playerAttack = rand() % 20 + 10;
+					playerDef = rand() % 10 + 10;
+					playerAgi = rand() % 5;
+					break;
+				case 2:
+					playerAttack = rand() % 5 + 10;
+					playerDef = rand() % 10 + 10;
+					playerAgi = rand() % 15;
+					break;
+				case 3:
+					playerAttack = rand() % 10 + 10;
+					playerDef = rand() % 20 + 10;
+					playerAgi = rand() % 5;
+					break;
+				}
+				choice = rand() % 3;
+
+				switch (choice) {
+				case 1:
+					monsterAttack = rand() % 20 + 10;
+					monsterDef = rand() % 10 + 10;
+					magi = rand() % 5;
+					break;
+				case 2:
+					monsterAttack = rand() % 5 + 10;
+					monsterDef = rand() % 10 + 10;
+					magi = rand() % 15;
+					break;
+				case 3:
+					monsterAttack = rand() % 10 + 10;
+					monsterDef = rand() % 20 + 10;
+					magi = rand() % 5;
+					break;
+				}
+				monsterDamage = (playerAttack - magi) - (monsterDef / playerAttack);
+				if (monsterDamage <0) {
+					monsterDamage = 0;
+				}
+				monsterHP = monsterHP - monsterDamage;
+				cout << "You did " << monsterDamage << " damage to the monster!\n";
+				cin.get();
+
+				if (monsterHP < 1) {
+                    system("clear");
+					cout << "You killed the giant spider! Well done! \n";
+                    cout<<"Press ENTER to continue...\n";
+					cin.get();
+				caveexit();
+				}
+
+				cout << "The monster now has " << monsterHP << " HP left.\n";
+				damage = (monsterAttack - playerAgi) - (playerDef / monsterAttack);
+				if (damage < 0)
+				{
+					damage = 0;
+				}
+				playerHP = playerHP - damage;
+
+				cout << "The monster stole " << damage << " points from you. You still have, " << playerHP << " HP points availalble\n";
+				if (playerHP < 1) {
+					cout << "You died! The beast still has " << monsterHP << " HP left. \n";
+                    main3();
+                    main();
+                    break;
+					cin.get();
+					
+				}
+			}
+		}
+	}
+}
+}
+
+
+ void caveexit(){
+     cout<<name<<": I crushed the spider with all my might and I am now ready to continue my journey to meet the grandmaster!\n";
+     sleep(2.7);
+     cout<< name<<": I head out of the cave through a small crawl space, and I see light at the end!\n";
+     sleep(2.7);
+     cout<<name<<": Fresh air hits my face as I emerge from the depths of the cave!\n";
+     sleep(2.7);;
+     cout<<name<<": A city that stands as tall as the clouds is directly infront of me!\n";
+     sleep(2.7);
+     cout<<name<<": Well, here goes nothing, let's meet the grandmaster\n";
+     cout << "Sprinting"; // "Sprinting" is printed to the terminal screen
+    cout.flush();
+        for (int i = 0; i < 3; i++) { // a loop here where everytime that i is smaller than 3 it will increment . until it meets the condition. 
+            cout << ".";
+            cout.flush(); //previous messages in the cout buffers are flushed 
+            sleep(3); //pause for 1.7 seconds
+            cout << "\b\b\b   \b\b\b"; //  allows the . to stay on 1 line and not go onto new lines 
+            system("clear");
+           chaptertwo(); 
+        }
+        
+     
+     
+ }   
+void chaptertwo(){
+    {
+    int selection1; 
+  system("clear");
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "******************************************     Chapter TWO: THE GRANDMASTER   ************************************************\n!";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+    cout<< "\n";
+     sleep(7);
+    system("clear");
+    cout<<"The Grandmaster was once a warrior who was beaten by the royal dragon.\n";
+        sleep(2.7);
+    cout<<"He believed he could defend his village by himself but was unable to.\n";
+        sleep(2.7);
+    cout<<"The Grandmaster trained for a long time to become the strongest warrior.\n";
+        sleep(2.7);
+    cout<<"However, he did fail. He started to study combat more and more.\n";
+        sleep(2.7);
+    cout<<"He eventually came to the age where he could not fight no more.\n";
+        sleep(2.7);
+    cout<<"He hoped young warriors would appear at some point to help him defeat the dragon\n";
+        sleep(2.7);
+    cout<<"and defend the village.\n";
+    cout<<"One day, a baby was born within the village the grandmaster is from.\n";
+        sleep(2.7);
+    cout<<"The grandmaster sensed something strange about the baby, but it was a good thing.\n";
+        sleep(2.7);
+    cout<<"At this moment, he knew that some day this baby boy would become a warrior.\n";
+        sleep(2.7);
+    cout<<"\n";
+   
+    cout<<name<<": I think I see the grandmaster, i shall approach him and ask\n";
+        sleep(2.7);
+    cout<<name<<": The grandmaster notices me and confronts me, it's like he was expecting me all this time!\n";
+        sleep(2.7);
+    cout<<"#Without any hesitance, the grandmaster leaps into conversation\n";
+        sleep(2.7);
+    
+    cout<<"Grandmaster: I have been expecting you, young warrior!\n"; 
+        sleep(2.7);
+    cout<<"Grandmaster: This castle is to be known as one of the most dangerous places to go.\n";
+        sleep(2.7);
+    cout<<"Grandmaster: It is very dangerous but you should be strong enough to challenge the monster.\n";
+        sleep(2.7);
+    cout<< "Grandmaster: Now, young one, go fourth and defeat the dragon\n";
+        sleep(2.7);
+    cout<<"Grandmaster: The castle is nearby,however, you will need this horse to get there!\n";
+        sleep(2.7);
+    cout<<name<<": I make my way to the castle.\n";
+        sleep(2.7);
+        system("clear");
+     cout << "Galloping\n"; // "Galloping" is printed to the terminal screen
+    cout.flush();
+        for (int i = 0; i < 3; i++) { // a loop here where everytime that i is smaller than 3 it will increment 1 . until it meets the condition. 
+            cout << ".";
+            cout.flush(); //previous messages in the cout buffers are flushed 
+            sleep(3); //pause for 3 seconds
+        }
+        cout << "\b\b\b   \b\b\b"; //  allows the . to stay on 1 line and not go onto new lines 
+    cout<< name <<": This must be the castle,this is where the dragon is. I will defeat it for my family and avenge the people of my village!!!\n";
+        sleep(2.7);
+    cout <<name<<": The castle is huge, no wonder that a castle this size can house such a big monster\n";
+    
+        
+    cout<<"You are in front of the castle door.\n Press 1 to go forward.\n";
+    cout<<"\n";
+    cin>> selection1;
+    if (selection1 == 1 ){
+        cout<< "#Door opens\n";
+    }
+     else 
+     {
+         cout<<"Press 1 to proceed through the door";
+     }
+    {
+        cout<<name<<": A 4 legged beast approaches me and wants to battle!\n";
+        sleep(2.2);
+        cout<<"Press 1 to battle this fowl beast!\n";
+            cin>> selection1;
+    if (selection1 == 1 ){
+        system("clear");
+        cout<< "BATTLEPHASE!\n";
+        castleFight();
+        main3();
+        main();
+        
+        
+    }
+            
+    }
+    
+}
+}
+void cave(){
+ cout<<"The cave from the outside looks very dark, I might need to light my torch\n";
+    cout<<"#Lights torch with flimsy rock!\n";
+    cout<< name<< ": In the cave the only thing i can hear is my own footsteps\n";
+    cout<< name<< ": I carry on walking through the cave!\n";
+    sleep(5);
+    system("clear");
+    cout << "Walking"; // "Walking" is printed to the terminal screen
+    cout.flush();
+        for (int i = 0; i < 3; i++) { // a loop here where everytime that i is smaller than 3 it will increment . until it meets the condition. 
+            cout << ".";
+            cout.flush(); //previous messages in the cout buffers are flushed 
+            sleep(3); //pause for 1.7 seconds  
+        }
+        cout << "\b\b\b   \b\b\b"; //  allows the . to stay on 1 line and not go onto new lines 
+    sleep(2);
+  cout<<"\n";
+  cout<<name<<": Something heavy hits me round the back of the head and I collapse\n";
+  cout<<name<<": As I get up I look above me, I'M STUNNED BY WHAT I SEE!!\n";
+    sleep(6);
+    
+  cout<<name<<": A\n";
+    sleep(1.3);
+  cout<<name<<": GIANT!\n";
+    sleep(1.3);
+  cout<<name<<": SPIDER!\n";
+    sleep(4);
+    system("clear");
+    cout<<"Press 1 to take the monster head on!\n";
+    cout<<"Press 2 to run for your life!\n";
+    int choiceOne1;
+    cin>>choiceOne1;
+    system("clear");
+    switch(choiceOne1)
+    {
+        case 1: 
+            cout << "I have made a mistake here but here goes nothing!\n";
+            sleep(3);
+            system("clear");
+            cout<<"BATTLE PHASE!\n";
+            spiderfight();
+            break;
+        case 2: 
+            cout << "I run for my life in the opposite direction as this monster is too powerful!!!\n" << endl;
+            cout<<"\n";
+            break;
+        default:
+            while(!(cin>>choiceOne1)){
+             cout<<"That doesn't seem right,hmmmm??\n";
+                cin.clear();
+                cin.ignore(100,'\n');      
+            }
+             
+}    
+}
+
+void finalFight()
+    {
+     {
+	int choice;
+	int monsterHP, playerHP, i, init, playerAttack, playerDef, playerAgi, monsterAttack, monsterDef, magi, damage, monsterDamage;
+	playerAttack = 10;
+	playerDef = 15;
+	playerAgi = 5;
+	monsterAttack = 2;
+	monsterDef = 5;
+	magi = 0;
+
+	srand(unsigned(time(0)));
+	init = rand() % 2 + 1;
+	monsterHP = rand() % 40 + 100;
+	playerHP = rand() % 50 + 100;
+	if (init == 1) {
+		cout << "You can start!\n";
+	}
+	while (playerHP > 0 || monsterHP > 0) {
+		cout << "What do you want to do?\n 1 -> Fierce Attack \n 2 -> Light Attack \n 3 -> Defensive Dance.\n";
+		do { cin >> choice; } while (choice > 3 || choice < 1);
+		switch (choice) {
+		case 1:
+			playerAttack = rand() % 15 + 10;
+			playerDef = rand() % 10 + 10;
+			playerAgi = rand() % 5;
+			break;
+		case 2:
+			playerAttack = rand() % 15 + 10;
+			playerDef = rand() % 10 + 10;
+			playerAgi = rand() % 15;
+			break;
+		case 3:
+			playerAttack = rand() % 15 + 10;
+			playerDef = rand() % 20 + 10;
+			playerAgi = rand() % 5;
+			break;
+		}
+		choice = rand() % 3;
+
+		switch (choice) {
+		case 1:
+			monsterAttack = rand() % 5 + 10;
+			monsterDef = rand() % 10 + 10;
+			magi = rand() % 5;
+			break;
+		case 2:
+			monsterAttack = rand() % 5 + 10;
+			monsterDef = rand() % 10 + 10;
+			magi = rand() % 15;
+			break;
+		case 3:
+			monsterAttack = rand() % 5 + 10;
+			monsterDef = rand() % 20 + 10;
+			magi = rand() % 5;
+			break;
+		}
+		monsterDamage = (playerAttack - magi) - (monsterDef / playerAttack);
+		if (monsterDamage <0) {
+			monsterDamage = 0;
+		}
+		monsterHP = monsterHP - monsterDamage;
+		cout << "You did " << monsterDamage << " damage to Alistair!\n";
+		cin.get();
+
+		if (monsterHP < 1) {
+			cout << "You killed Alistair! Well done!\n";
+      cout<<"Press ENTER to continue...\n";
+      cin.get();
+      system("clear");
+      credits();
+			
+		}
+
+		cout << "Alistair now has " << monsterHP << " HP left.\n";
+		damage = (monsterAttack - playerAgi) - (playerDef / monsterAttack);
+		if (damage < 0)
+		{
+			damage = 0;
+		}
+		playerHP = playerHP - damage;
+
+		cout << "Alistair stole " << damage << " points from you. You still have, " << playerHP << " HP points availalble\n";
+
+		if (playerHP < 1) {
+			cout << "You died! Alistair still has " << monsterHP << " HP left. \n";
+      sleep(2);
+      system("clear");
+      main3;
+      main;
+      break;
+			cin.get();
+			
+		}
+		else {
+			cout << "You can start!\n";
+
+			while (playerHP > 0 || monsterHP > 0) {
+				cout << "What do you want to do?\n 1 -> Fierce Attack \n 2 -> Light Attack \n 3 -> Defensive Dance.\n";
+				do { cin >> choice; } while (choice > 3 || choice < 1);
+				switch (choice) {
+				case 1:
+					playerAttack = rand() % 20 + 10;
+					playerDef = rand() % 10 + 10;
+					playerAgi = rand() % 5;
+					break;
+				case 2:
+					playerAttack = rand() % 5 + 10;
+					playerDef = rand() % 10 + 10;
+					playerAgi = rand() % 15;
+					break;
+				case 3:
+					playerAttack = rand() % 10 + 10;
+					playerDef = rand() % 20 + 10;
+					playerAgi = rand() % 5;
+					break;
+				}
+				choice = rand() % 3;
+
+				switch (choice) {
+				case 1:
+					monsterAttack = rand() % 20 + 10;
+					monsterDef = rand() % 10 + 10;
+					magi = rand() % 5;
+					break;
+				case 2:
+					monsterAttack = rand() % 5 + 10;
+					monsterDef = rand() % 10 + 10;
+					magi = rand() % 15;
+					break;
+				case 3:
+					monsterAttack = rand() % 10 + 10;
+					monsterDef = rand() % 20 + 10;
+					magi = rand() % 5;
+					break;
+				}
+				monsterDamage = (playerAttack - magi) - (monsterDef / playerAttack);
+				if (monsterDamage <0) {
+					monsterDamage = 0;
+				}
+				monsterHP = monsterHP - monsterDamage;
+				cout << "You did " << monsterDamage << " damage to Alistair!\n";
+				cin.get();
+
+				if (monsterHP < 1) {
+					cout << "You killed Alistair! Well done! \n";
+          cout<<"Press ENTER to continue...\n";
+					cin.get();
+          system("clear");
+          credits();
+				}
+
+				cout << "Alistair " << monsterHP << " HP left.\n";
+				damage = (monsterAttack - playerAgi) - (playerDef / monsterAttack);
+				if (damage < 0)
+				{
+					damage = 0;
+				}
+				playerHP = playerHP - damage;
+
+				cout << "The monster stole " << damage << " points from you. You still have, " << playerHP << " HP points availalble\n";
+				if (playerHP < 1) {
+					cout << "You died! Alistair still has " << monsterHP << " HP left. \n";
+                    sleep(2);
+          system("clear");
+                    main3();
+                    main();
+                    break;
+					cin.get();
+					
+				}
+			}
+		}
+	}
+}
+    
+}
+
+void finalChapter ()
+{
+  system("clear");
+  cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "******************************************     Chapter Three: The Fall of Drake   ***********************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+	cout << "*******************************************************************************************************************************\n";
+  cout << "\n" << endl;
+  sleep(2.5);
+  system("clear");
+  int Playerhp = 100; // player hp
+int Drakehp = 200; // Drake's hp
+string PlayerDamage = "\n"; // player name
+string DrakeDamage = "\n";// Drakes's name 
+
+void ResetVariables() 
+{
+	Playerhp = 100; // attack variables delcared
+	Drakehp = 200;// damage for Drake's
+	PlayerDamage = "\n"; // player damage 
+	DrakeDamage = "\n"; // prints player damage
+
+}
+
+
+
+void Draw() 
+{
+
+	cout << "\n\nYour Health: " << Playerhp << endl;  // players health
+
+	cout << "Drake's Health: " << Drakehp << endl; // Drake's health
+
+	cout << "1. Attack Drake\n"; // methods attack
+
+	cout << "2. RUN! \n\n\n"; // run from monster
+
+	cout << PlayerDamage; // counts player
+
+	cout << DrakeDamage;// counts monster
+
+}
+
+
+
+ 
+  
+
+
+
+string Input() 
+{  // player  input 
+
+	string test; 
+
+	cin >> test;
+
+	return test;
+
+}
+
+
+
+int Update(string playerinput) {
+
+	if (playerinput == "1") {
+
+		if (rand() % 100 < 70) {     // allows  turn attacks for both player and monster
+
+			int r1 = rand() % 25;
+
+			Drakehp -= r1;
+
+			stringstream ss;
+
+			ss << "You hit for " << r1 << " damage.\n\n\n";
+
+			PlayerDamage = ss.str();
+
+		}
+
+		else {
+
+			PlayerDamage = "You miss Drake.\n\n\n"; // player attack if player misses
+
+		}
+
+	}
+
+
+
+	else if (playerinput == "2") 
+    {
+        
+       return 1;
+	}
+
+
+
+	else {
+
+		PlayerDamage = "This is not a valid option.\n\n\n";
+
+	}
+
+
+
+	//Drake attack's.
+
+	if (rand() % 100 < 30) {
+
+		int r2 = rand() % 50;
+
+		Playerhp -= r2;
+
+		stringstream ss;
+
+		ss << "Drake hits for " << r2 << " damage.\n\n\n";
+
+		DrakeDamage = ss.str();
+
+	}
+
+	else {
+
+		DrakeDamage = "Drake Misses!\n\n\n";
+
+	}
+
+
+
+	return 0;
+
+}
+
+
+
+int main() {
+
+	int State;
+
+	string PlayerInput;
+
+	bool Play = true;
+    
+    string name;
+    cout << "Player name" << endl;
+    
+    
+
+
+	while (Play) 
+    {
+
+		//Reset the Initial Information
+
+		ResetVariables();
+        
+        cout<<"The grandmaster has you brought to the anicent grounds of the castle where the dragon Drake lives.\n\n" << endl;
+
+		cout << "Drake approaches you. Do you fight (yes/no)?\n" << endl;
+
+		PlayerInput = Input();
+
+		if (PlayerInput == "no" || PlayerInput == "No" || PlayerInput == "N" || PlayerInput == "n") {
+            
+
+			Play = false;
+
+		}
+
+		Draw();
+		while (true) {
+			PlayerInput = Input();
+
+			State = Update(PlayerInput);
+			if (State == 1)
+
+				break;
+			//Break out of the game looop if won or lost.
+
+			if (Drakehp <= 0) {
+
+
+			    cout << "You have deafeated the Drake!.\n";
+
+				break;
+
+			}
+
+			else if (Playerhp <= 0) {
+
+
+				cout << "You Lose.\n";
+
+				break;
+
+			}
+
+
+
+			Draw();
+
+		}
+
+
+
+		cout << "Game Over.\n";
+
+		cout << " Try again (yes/no)?\n";
+
+		PlayerInput = Input();
+
+		if (PlayerInput == "no" || PlayerInput == "No" || PlayerInput == "N" || PlayerInput == "n") 
+        {
+
+			Play = false;
+
+		}
+
+	}
+
+
+
+	return 0;
+
+}
